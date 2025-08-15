@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Routes, Route, useLocation, useNavigate, Navigate, BrowserRouter as Router } from 'react-router-dom';
+import AOS from 'aos';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 
 // From first code
@@ -57,6 +58,17 @@ function MainAppContent() {
   const [showSplash, setShowSplash] = useState(false);
   const splashAutoShown = useRef(false);
   const splashTriggeredByClick = useRef(false);
+
+  // Initialize AOS for scroll animations
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 100,
+      delay: 100,
+    });
+  }, []);
 
   // Auto-show splash only once on home load
   useEffect(() => {
