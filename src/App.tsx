@@ -111,6 +111,7 @@ function MainAppContent() {
           />
         )}
         <main
+          className={`${!isDashboardPage ? 'pt-20' : ''}`}
           style={{
             opacity: showSplash ? 0 : 1,
             transform: showSplash ? 'translateY(100vh) scale(0.95)' : 'translateY(0) scale(1)',
