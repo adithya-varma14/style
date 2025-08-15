@@ -129,7 +129,7 @@ export default function ChatApp() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-purple-50 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-white to-purple-50 pt-20">
       {!inRoom ? (
         <div className="container mx-auto px-4 py-8 max-w-6xl">
           <div className="mb-8 text-center">
