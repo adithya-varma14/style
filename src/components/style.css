@@ -1,4 +1,4 @@
-:root {
+::root {
   --navbar-height: 64px; /* Adjust if your navbar is taller */
 }
 
@@ -193,4 +193,81 @@ body, html {
   .chat-bubble {
     max-width: 85%;
   }
+}
+
+/* Animation for smooth fade-in */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Ensure chat container doesn't interfere with header */
+.min-h-screen {
+  min-height: calc(100vh - 80px);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Adjust chat message max width on mobile */
+  .chat-message {
+    max-width: 85% !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .chat-message {
+    max-width: 90% !important;
+  }
+
+  /* Stack header elements on very small screens */
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+/* Smooth scrolling for chat container only */
+.chat-container {
+  scroll-behavior: smooth;
+  overflow-anchor: auto;
+}
+
+/* Hide scrollbar for cleaner look while maintaining functionality */
+.chat-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.chat-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Firefox scrollbar styling */
+.chat-container {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
 }
