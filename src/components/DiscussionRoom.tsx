@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef, FormEvent, ChangeEvent } from "react";
 import io, { Socket } from "socket.io-client";
 import * as timeago from "timeago.js";
@@ -130,7 +129,7 @@ export default function ChatApp() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-teal-50">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-purple-50 pt-20">
       {!inRoom ? (
         <div className="container mx-auto px-4 py-8 max-w-6xl">
           <div className="mb-8 text-center">
@@ -249,7 +248,7 @@ export default function ChatApp() {
                   </div>
                 </div>
               ))}
-              
+
               {typingUser && (
                 <div className="flex justify-start animate-pulse">
                   <div className="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-2xl">
@@ -262,7 +261,7 @@ export default function ChatApp() {
                   </div>
                 </div>
               )}
-              
+
               {/* This div ensures smooth scrolling within the chat container only */}
               <div ref={messagesEndRef} className="h-1" />
             </div>
