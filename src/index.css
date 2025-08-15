@@ -19,16 +19,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 15% 10%;
 
-    /* Enhanced primary colors - Teal */
-    --primary: 188 94% 42%;
+    /* Nirvaha primary colors - Teal */
+    --primary: 180 76% 47%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 188 94% 55%;
-    --primary-dark: 188 94% 30%;
+    --primary-light: 180 76% 60%;
+    --primary-dark: 180 76% 35%;
 
-    /* Refined secondary - Purple */
-    --secondary: 271 81% 56%;
+    /* Nirvaha secondary - Purple */
+    --secondary: 270 70% 55%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-light: 271 81% 70%;
+    --secondary-light: 270 70% 68%;
 
     /* Modern neutrals with teal tint */
     --muted: 185 30% 98%;
@@ -63,10 +63,10 @@
     --font-size-4xl: 2.25rem;
     --font-size-5xl: 3rem;
 
-    /* Enhanced gradients - Teal to Purple */
-    --gradient-primary: linear-gradient(135deg, hsl(188 94% 42%) 0%, hsl(271 81% 56%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(271 81% 56%) 0%, hsl(188 94% 42%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(188 94% 55%) 0%, hsl(271 81% 70%) 100%);
+    /* Nirvaha gradients - Teal to Purple */
+    --gradient-primary: linear-gradient(135deg, hsl(180 76% 47%) 0%, hsl(270 70% 55%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(270 70% 55%) 0%, hsl(180 76% 47%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(180 76% 60%) 0%, hsl(270 70% 68%) 100%);
     
     /* Modern shadows */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -210,15 +210,15 @@
 
   /* Modern button styles */
   .btn-primary {
-    @apply bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700;
+    @apply bg-gradient-to-r from-teal-500 to-purple-500 hover:from-teal-600 hover:to-purple-600;
     @apply text-white font-semibold px-6 py-3 rounded-xl;
     @apply transition-all duration-300 transform hover:scale-105;
     @apply shadow-lg hover:shadow-xl;
-    @apply focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2;
+    @apply focus:ring-2 focus:ring-teal-500 focus:ring-offset-2;
   }
 
   .btn-secondary {
-    @apply bg-white border-2 border-gray-200 hover:border-cyan-300;
+    @apply bg-white border-2 border-gray-200 hover:border-teal-300;
     @apply text-gray-700 font-semibold px-6 py-3 rounded-xl;
     @apply transition-all duration-300 transform hover:scale-105;
     @apply shadow-md hover:shadow-lg;

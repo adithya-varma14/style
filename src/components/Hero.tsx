@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Play, Star, Users, Award, CheckCircle, Sparkles, Shield, Clock } from 'lucide-react';
 import BlurText from './BlurText';
@@ -51,36 +50,36 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-cyan-50 via-white to-purple-50 pt-20">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-teal-50 via-white to-purple-50 pt-20">
       {/* Enhanced Background Elements */}
-      <motion.div 
+      <motion.div
         style={{ y }}
         className="absolute inset-0 bg-gradient-to-br from-teal-50/80 via-white to-purple-50/80"
       />
-      
+
       {/* Animated Background Orbs */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div 
+        <motion.div
           className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-teal-400/30 to-emerald-400/30 rounded-full blur-xl"
-          animate={{ 
+          animate={{
             x: [0, 30, 0],
             y: [0, -20, 0],
             scale: [1, 1.1, 1]
           }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div 
+        <motion.div
           className="absolute bottom-32 right-16 w-48 h-48 bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-full blur-xl"
-          animate={{ 
+          animate={{
             x: [0, -40, 0],
             y: [0, 25, 0],
             scale: [1, 0.9, 1]
           }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-1/3 right-20 w-24 h-24 bg-gradient-to-br from-yellow-400/40 to-orange-400/40 rounded-full blur-lg"
-          animate={{ 
+          animate={{
             x: [0, 20, 0],
             y: [0, -30, 0],
             rotate: [0, 180, 360]
@@ -92,12 +91,12 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Content */}
-          <motion.div 
+          <motion.div
             ref={heroRef.ref}
             className={`text-center lg:text-left space-y-6 lg:space-y-8 ${heroRef.isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
           >
             {/* Trust Badge */}
-            <motion.div 
+            <motion.div
               className="inline-flex items-center space-x-3 bg-white/90 backdrop-blur-md rounded-full px-4 py-3 shadow-lg border border-white/20"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -122,10 +121,10 @@ const Hero = () => {
                       className="text-3xl sm:text-5xl lg:text-7xl font-bold leading-tight text-gray-900"
                       text="Harmony of"
                       spacing={9}
-                      transition={{ 
-                        type: 'spring', 
-                        bounce: 0, 
-                        duration: 1.5, 
+                      transition={{
+                        type: 'spring',
+                        bounce: 0,
+                        duration: 1.5,
                         delay: 0.2
                       }}
                     />
@@ -133,10 +132,10 @@ const Hero = () => {
                       className="text-3xl sm:text-5xl lg:text-7xl font-bold leading-tight bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-700 bg-clip-text text-transparent animate-gradient"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ 
-                        type: 'spring', 
-                        bounce: 0.3, 
-                        duration: 1.2, 
+                      transition={{
+                        type: 'spring',
+                        bounce: 0.3,
+                        duration: 1.2,
                         delay: 0.8
                       }}
                     >
@@ -156,8 +155,8 @@ const Hero = () => {
                 )}
               </div>
             </div>
-            
-            <motion.p 
+
+            <motion.p
               className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -167,7 +166,7 @@ const Hero = () => {
             </motion.p>
 
             {/* Features Grid */}
-            <motion.div 
+            <motion.div
               ref={featuresRef.ref}
               className={`grid grid-cols-1 sm:grid-cols-2 gap-4 ${featuresRef.isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
             >
@@ -187,7 +186,7 @@ const Hero = () => {
             </motion.div>
 
             {/* CTA Buttons */}
-            <motion.div 
+            <motion.div
               className="flex flex-col sm:flex-row gap-4 pt-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -206,16 +205,16 @@ const Hero = () => {
               ) : (
                 <motion.button
                   onClick={handleJourneyClick}
-                  className="group bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl transform transition-all duration-300 flex items-center justify-center space-x-3 animate-gradient"
+                  className="group bg-gradient-to-r from-teal-500 to-purple-500 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:from-teal-600 hover:to-purple-600 hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-3 text-lg"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <span>Start Your Healing Journey</span>
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </motion.button>
               )}
-              
-              <motion.button 
+
+              <motion.button
                 className="group bg-white/90 backdrop-blur-md text-gray-700 px-8 py-4 rounded-xl font-semibold border-2 border-white/50 hover:border-teal-300/50 hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-3 text-lg"
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
@@ -226,7 +225,7 @@ const Hero = () => {
             </motion.div>
 
             {/* Stats */}
-            <motion.div 
+            <motion.div
               ref={statsRef.ref}
               className={`grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 ${statsRef.isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
             >
@@ -249,21 +248,21 @@ const Hero = () => {
           </motion.div>
 
           {/* Right Content - Visual */}
-          <motion.div 
+          <motion.div
             className="relative max-w-lg mx-auto lg:max-w-none lg:mx-0 mt-12 lg:mt-0"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
           >
             {/* Main Card */}
-            <motion.div 
+            <motion.div
               className="relative bg-gradient-to-br from-white/90 to-white/60 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20"
               whileHover={{ y: -10, rotateY: 5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
                 <div className="text-center mb-6">
-                  <motion.div 
+                  <motion.div
                     className="w-16 h-16 bg-gradient-to-br from-teal-600 via-emerald-600 to-teal-700 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg"
                     animate={{ rotate: [0, 360] }}
                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -273,10 +272,10 @@ const Hero = () => {
                   <h3 className="text-xl font-bold text-gray-900 mb-2">AI Wellness Companion</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">Personalized guidance combining Bhagavad Gita wisdom with modern therapy</p>
                 </div>
-                
+
                 {/* Chat Interface Preview */}
                 <div className="space-y-3">
-                  <motion.div 
+                  <motion.div
                     className="bg-gray-100/80 backdrop-blur-sm rounded-lg p-3 text-sm text-gray-700"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -284,7 +283,7 @@ const Hero = () => {
                   >
                     "I'm feeling overwhelmed with work stress..."
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-700 text-white rounded-lg p-3 text-sm ml-4"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -293,22 +292,22 @@ const Hero = () => {
                     "Let's explore this together. As the Gita teaches us about finding balance in action..."
                   </motion.div>
                 </div>
-                
+
                 {/* Mood Indicators */}
                 <div className="flex justify-between items-center mt-6 pt-4 border-t border-gray-200/50">
                   <div className="text-xs text-gray-500 font-medium">Mood Detected: Stressed</div>
                   <div className="flex space-x-1">
-                    <motion.div 
+                    <motion.div
                       className="w-2 h-2 bg-yellow-400 rounded-full"
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 2, repeat: Infinity, delay: 0 }}
                     />
-                    <motion.div 
+                    <motion.div
                       className="w-2 h-2 bg-emerald-400 rounded-full"
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
                     />
-                    <motion.div 
+                    <motion.div
                       className="w-2 h-2 bg-emerald-400 rounded-full"
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
@@ -319,14 +318,14 @@ const Hero = () => {
             </motion.div>
 
             {/* Floating Elements */}
-            <motion.div 
+            <motion.div
               className="absolute -top-6 -right-6 bg-white/90 backdrop-blur-md rounded-full p-4 shadow-lg border border-white/20"
               animate={{ y: [-10, 10, -10] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
               <div className="text-2xl">🧘</div>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="absolute -bottom-4 -left-4 bg-white/90 backdrop-blur-md rounded-full p-3 shadow-lg border border-white/20"
               animate={{ y: [10, -10, 10] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}

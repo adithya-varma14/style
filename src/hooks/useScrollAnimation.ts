@@ -3,31 +3,31 @@ import { useEffect, useRef, useState } from 'react';
 
 interface UseScrollAnimationOptions {
   threshold?: number;
-  rootMargin?: string;
   triggerOnce?: boolean;
+  delay?: number;
 }
 
 export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
-  const { threshold = 0.1, rootMargin = '0px 0px -10% 0px', triggerOnce = true } = options;
-  const ref = useRef<HTMLElement>(null);
+  const { threshold = 0.1, triggerOnce = true, delay = 0 } = options;
+  const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          setTimeout(() => {
+            setIsVisible(true);
+          }, delay);
+          
           if (triggerOnce) {
-            observer.unobserve(entry.target);
+            observer.disconnect();
           }
         } else if (!triggerOnce) {
           setIsVisible(false);
         }
       },
-      {
-        threshold,
-        rootMargin,
-      }
+      { threshold }
     );
 
     const currentRef = ref.current;
@@ -40,53 +40,47 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
         observer.unobserve(currentRef);
       }
     };
-  }, [threshold, rootMargin, triggerOnce]);
+  }, [threshold, triggerOnce, delay]);
 
   return { ref, isVisible };
 };
 
-// Utility function for staggered animations
-export const useStaggeredAnimation = (count: number, delay: number = 100) => {
-  const refs = useRef<(HTMLElement | null)[]>([]);
-  const [visibleItems, setVisibleItems] = useState<boolean[]>(new Array(count).fill(false));
+// Enhanced hook for staggered animations
+export const useStaggeredScrollAnimation = (itemCount: number, staggerDelay: number = 100) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [visibleItems, setVisibleItems] = useState<boolean[]>(new Array(itemCount).fill(false));
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-
-    refs.current.forEach((ref, index) => {
-      if (ref) {
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) {
-              setTimeout(() => {
-                setVisibleItems(prev => {
-                  const newState = [...prev];
-                  newState[index] = true;
-                  return newState;
-                });
-              }, index * delay);
-              observer.unobserve(entry.target);
-            }
-          },
-          {
-            threshold: 0.1,
-            rootMargin: '0px 0px -10% 0px',
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Stagger the animation of child items
+          for (let i = 0; i < itemCount; i++) {
+            setTimeout(() => {
+              setVisibleItems(prev => {
+                const newState = [...prev];
+                newState[i] = true;
+                return newState;
+              });
+            }, i * staggerDelay);
           }
-        );
-        
-        observer.observe(ref);
-        observers.push(observer);
-      }
-    });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const currentRef = containerRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
 
     return () => {
-      observers.forEach(observer => observer.disconnect());
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
     };
-  }, [count, delay]);
+  }, [itemCount, staggerDelay]);
 
-  const setRef = (index: number) => (element: HTMLElement | null) => {
-    refs.current[index] = element;
-  };
-
-  return { setRef, visibleItems };
+  return { containerRef, visibleItems };
 };
